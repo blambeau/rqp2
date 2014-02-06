@@ -5,21 +5,33 @@
     <noma>0110-14-52</noma>
   </student>
   <solutions>
+
+    <!-- ONE puzzle entry per puzzle ID, don't forget it -->
     <puzzle id="S1">
-      <answer language="sql"><![CDATA[
-        SELECT p.pid FROM parts AS p
-      ]]></answer>
+
+      <!-- One solution in Tutorial D
+           we use CDATA to avoid character clashes with XML itself -->
       <answer language="tutorial-d"><![CDATA[
         PARTS{PID}
       ]]></answer>
-    </puzzle>
-    <puzzle id="S2">
+
+      <!-- One solution in SQL, kept for your own reasons -->
       <answer language="sql"><![CDATA[
-        SELECT * FROM parts
+        SELECT p.pid FROM parts AS p
       ]]></answer>
-      <answer language="tutorial-d"><![CDATA[
-        PARTS
+
+      <!-- Another solution in SQL,
+           ONLY this one will be taken into account so keep your best
+           one as last one per puzzle entry -->
+      <answer language="sql"><![CDATA[
+        SELECT pid FROM parts
       ]]></answer>
+
     </puzzle>
+
+    <puzzle id="S2">
+      <!-- empty entries are simply ignored -->
+    </puzzle>
+
   </solutions>
 </submission>
