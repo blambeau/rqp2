@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:element name="submission" type="submissionType">
+    <xsd:unique name="UniqueProblemId">
+      <xsd:selector xpath="solutions/puzzle"/> 
+      <xsd:field xpath="@id"/>
+    </xsd:unique>
+  </xsd:element>
+
+  <xsd:complexType name="submissionType">
+    <xsd:sequence>
+      <xsd:element name="student" type="studentType" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="solutions" type="solutionsType" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="studentType">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="noma" type="nomaType" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="solutionsType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="puzzle" type="puzzleType" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="puzzleType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="answer" type="answerType" />
+    </xsd:sequence>
+    <xsd:attribute name="id" type="puzzleIdType" use="required" />
+  </xsd:complexType>
+
+  <xsd:complexType name="answerType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="language" type="languageType" use="required"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:simpleType name="languageType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="sql"/>
+      <xsd:enumeration value="tutorial-d"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="nomaType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="puzzleIdType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[SEMDH]\d+"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<submission>
+  <student>
+    <name>Bernard Lambeau</name>
+    <noma>0110-14-52</noma>
+  </student>
+  <solutions>
+    <puzzle id="S1">
+      <answer language="sql"><![CDATA[
+        SELECT p.pid FROM parts AS p
+      ]]></answer>
+      <answer language="tutorial-d"><![CDATA[
+        PARTS
+      ]]></answer>
+    </puzzle>
+    <puzzle id="E2">
+      <answer language="sql"><![CDATA[
+        SELECT p.pid FROM parts AS p
+      ]]></answer>
+      <answer language="tutorial-d"><![CDATA[
+        PARTS
+      ]]></answer>
+    </puzzle>
+  </solutions>
+</submission>

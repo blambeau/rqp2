@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<submission>
+  <solutions>
+    <puzzle id="E1">
+      <answer language="sql"><![CDATA[
+        SELECT p.pid FROM parts AS p
+      ]]></answer>
+      <answer language="tutorial-d"><![CDATA[
+        PARTS
+      ]]></answer>
+    </puzzle>
+    <puzzle id="E2">
+      <answer language="sql"><![CDATA[
+        SELECT p.pid FROM parts AS p
+      ]]></answer>
+      <answer language="tutorial-d"><![CDATA[
+        PARTS
+      ]]></answer>
+    </puzzle>
+  </solutions>
+</submission>
