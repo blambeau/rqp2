@@ -3,9 +3,9 @@ module RQP2
   class Submission
     describe Validator, "#call" do
 
-      WRONG = (FIXTURES/"validator/wrong").glob("*.xml")
+      WRONG = (FIXTURES/"submissions/wrong").glob("*.xml")
 
-      RIGHT = (FIXTURES/"validator/right").glob("*.xml")
+      RIGHT = (FIXTURES/"submissions/right").glob("*.xml")
 
       context 'with a block' do
 
