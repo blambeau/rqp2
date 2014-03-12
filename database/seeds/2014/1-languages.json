@@ -1,0 +1,5 @@
+[
+  { "language": "tutorial-d", "name": "Tutorial D" },
+  { "language": "sql",        "name": "SQL"        },
+  { "language": "alf",        "name": "Alf"        }
+]

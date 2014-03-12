@@ -13,9 +13,9 @@ Student = <data> {
 
 # Information about an answer
 Answer = <data> {
-  puzzle: PuzzleId,
-  language: LangId,
-  position: Posint,
+  puzzle:     PuzzleId,
+  language:   LangId,
+  position:   Posint,
   expression: Expression
 }
 
