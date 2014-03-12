@@ -1,6 +1,6 @@
 require 'spec_helper'
 module RQP2
-  module Submission
+  class Submission
     describe Validator, ".xsd" do
 
       subject{ Validator.xsd }
@@ -16,5 +16,5 @@ module RQP2
       end
 
     end # describe Validator
-  end # module Submission
+  end # class Submission
 end # module RQP2

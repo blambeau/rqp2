@@ -1,5 +1,5 @@
 module RQP2
-  module Submission
+  class Submission
     class Validator
 
       ValidationError = Class.new(StandardError)
@@ -29,5 +29,5 @@ module RQP2
       end
 
     end # class Validator
-  end # module Submission
+  end # class Submission
 end # module RQP2

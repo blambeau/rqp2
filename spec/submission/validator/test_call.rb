@@ -1,6 +1,6 @@
 require 'spec_helper'
 module RQP2
-  module Submission
+  class Submission
     describe Validator, "#call" do
 
       WRONG = (FIXTURES/"validator/wrong").glob("*.xml")
@@ -45,5 +45,5 @@ module RQP2
       end # without block
 
     end # describe Validator
-  end # module Submission
+  end # class Submission
 end # module RQP2
