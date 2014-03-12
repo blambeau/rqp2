@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+$:.unshift File.expand_path('../../lib', __FILE__)
+require 'rqp2/command'
+RQP2::Command.run(ARGV)

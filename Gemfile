@@ -7,6 +7,7 @@ gem "sequel"
 gem "uuid"
 gem "pg"
 gem "alf"
+gem "quickl"
 
 group "development" do
   gem "rspec"

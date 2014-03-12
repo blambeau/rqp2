@@ -109,6 +109,7 @@ DEPENDENCIES
   path
   pg
   qrb!
+  quickl
   rake
   rspec
   sequel
