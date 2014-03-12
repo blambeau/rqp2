@@ -45,6 +45,7 @@
 
   <xsd:simpleType name="languageType">
     <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="alf"/>
       <xsd:enumeration value="sql"/>
       <xsd:enumeration value="tutorial-d"/>
     </xsd:restriction>
