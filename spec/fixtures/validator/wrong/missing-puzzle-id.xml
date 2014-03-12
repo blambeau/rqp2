@@ -4,7 +4,7 @@
     <name>Bernard Lambeau</name>
     <noma>NOMA</noma>
   </student>
-  <solutions>
+  <answers>
     <puzzle>
       <answer language="sql"><![CDATA[
         SELECT p.pid FROM parts AS p
@@ -13,5 +13,5 @@
         PARTS
       ]]></answer>
     </puzzle>
-  </solutions>
+  </answers>
 </submission>

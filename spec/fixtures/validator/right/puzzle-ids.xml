@@ -4,11 +4,11 @@
     <name>Bernard Lambeau</name>
     <noma>0110-14-52</noma>
   </student>
-  <solutions>
+  <answers>
     <puzzle id="S1"></puzzle>
     <puzzle id="E2"></puzzle>
     <puzzle id="M44"></puzzle>
     <puzzle id="D14"></puzzle>
     <puzzle id="H56"></puzzle>
-  </solutions>
+  </answers>
 </submission>

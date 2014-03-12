@@ -3,7 +3,7 @@
 
   <xsd:element name="submission" type="submissionType">
     <xsd:unique name="UniqueProblemId">
-      <xsd:selector xpath="solutions/puzzle"/> 
+      <xsd:selector xpath="answers/puzzle"/> 
       <xsd:field xpath="@id"/>
     </xsd:unique>
   </xsd:element>
@@ -11,7 +11,7 @@
   <xsd:complexType name="submissionType">
     <xsd:sequence>
       <xsd:element name="student" type="studentType" minOccurs="1" maxOccurs="1"/>
-      <xsd:element name="solutions" type="solutionsType" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="answers" type="answersType" minOccurs="1" maxOccurs="1"/>
     </xsd:sequence>
   </xsd:complexType>
 
@@ -22,7 +22,7 @@
     </xsd:sequence>
   </xsd:complexType>
 
-  <xsd:complexType name="solutionsType">
+  <xsd:complexType name="answersType">
     <xsd:sequence>
       <xsd:element minOccurs="0" maxOccurs="unbounded" name="puzzle" type="puzzleType" />
     </xsd:sequence>
