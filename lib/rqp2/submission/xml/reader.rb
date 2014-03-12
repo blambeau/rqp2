@@ -32,12 +32,13 @@ module RQP2
           answers = []
           doc.xpath("//answers/puzzle").each do |puzzle|
             puzzle.xpath("answer").each_with_index do |answer, index|
+              expression = answer.text.to_s.strip
               answers << {
                 puzzle:   puzzle['id'].to_s,
                 language: answer['language'].to_s,
-                expression: answer.text.to_s.strip,
+                expression: expression,
                 position: index
-              }
+              } unless expression.empty?
             end
           end
           answers

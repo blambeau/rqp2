@@ -15,6 +15,8 @@
       <answer language="tutorial-d"><![CDATA[
         PARTS{PID}
       ]]></answer>
+      <answer language="alf"><![CDATA[
+      ]]></answer>
     </puzzle>
     <puzzle id="E2">
     </puzzle>
