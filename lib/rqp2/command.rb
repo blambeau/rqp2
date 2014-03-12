@@ -34,4 +34,5 @@ module RQP2
   end # class Command
 end # module RQP2
 require_relative "command/help"
+require_relative "command/check"
 require_relative "command/import"
