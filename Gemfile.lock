@@ -1,6 +1,14 @@
+GIT
+  remote: git@github.com:blambeau/qrb.git
+  revision: dbd61ebb254470aa1fc0f77c65ad449665c25a3b
+  specs:
+    qrb (0.4.0)
+      citrus (~> 2.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    citrus (2.4.1)
     diff-lcs (1.2.5)
     mini_portile (0.5.2)
     nokogiri (1.6.1)
@@ -21,4 +29,5 @@ PLATFORMS
 DEPENDENCIES
   nokogiri
   path
+  qrb!
   rspec
