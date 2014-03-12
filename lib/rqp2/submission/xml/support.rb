@@ -5,6 +5,7 @@ module RQP2
 
         def xmldoc_for(arg)
           return arg if arg.kind_of?(Nokogiri::XML::Document)
+          return xmldoc_for(Path(arg).read) if arg.is_a?(Path)
           Nokogiri::XML(arg)
         end
 
