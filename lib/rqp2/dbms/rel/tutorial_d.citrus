@@ -1,0 +1,141 @@
+grammar RQP2::DBMS::Rel::Grammar
+
+  rule literal
+      relation_literal
+    | tuple_literal
+    | scalar_literal
+  end
+
+  rule relation_literal
+    (relation_kw heading? pure_relation) {
+      captures[:pure_relation].first.value
+    }
+  end
+
+  rule pure_relation
+    (open_bracket (tuple_literal (comma tuple_literal)*)? close_bracket) {
+      Array(captures[:tuple_literal]).map(&:value)
+    }
+  end
+
+  rule tuple_literal
+    (tuple_kw heading? pure_tuple){
+      captures[:pure_tuple].first.value
+    }
+  end
+
+  rule pure_tuple
+    (open_bracket (attr_val (comma attr_val)*)? close_bracket) {
+      Array(captures[:attr_val]).reduce({}){|h,match|
+        h.merge(match.value){|k,_,_| raise "Duplicate attribute `#{k}`" }
+      }
+    }
+  end
+
+  rule heading
+    (open_bracket (attr_def (comma attr_def)*)? close_bracket) {
+      Array(captures[:attr_def]).reduce({}){|h,match|
+        h.merge(match.value){|k,_,_| raise "Duplicate attribute `#{k}`" }
+      }
+    }
+  end
+
+  rule attr_def
+    (attr_name spaces type_name) {
+      { captures[:attr_name].first.value => captures[:type_name].first.value }
+    }
+  end
+
+  rule attr_val
+    (attr_name spaces literal) {
+      { captures[:attr_name].first.value => captures[:literal].first.value }
+    }
+  end
+
+  rule scalar_literal
+      string_literal
+    | float_literal
+    | integer_literal
+    | boolean_literal
+  end
+
+  rule string_literal
+    (["] str:(!["] .)* ["]){
+      captures[:str].first.to_str
+    }
+  end
+
+  rule float_literal
+    (integer_literal '.' integer_literal){
+      Float(to_str)
+    }
+  end
+
+  rule integer_literal
+    ([0] | [1-9] [0-9]*){
+      Integer(to_str)
+    }
+  end
+
+  rule boolean_literal
+      true_literal
+    | false_literal
+  end
+
+  rule true_literal
+    ("TRUE" | "true"){
+      true
+    }
+  end
+
+  rule false_literal
+    ("FALSE" | "false"){
+      false
+    }
+  end
+
+  ### names
+
+  rule attr_name
+    [a-zA-Z]+ {
+      to_str.downcase.to_sym
+    }
+  end
+
+  rule type_name
+    [a-zA-Z]+ {
+      to_str.to_sym
+    }
+  end
+
+  ### lexer
+
+  rule tuple_kw
+    "TUPLE" spacing
+  end
+
+  rule relation_kw
+    "RELATION" spacing
+  end
+
+  rule comma
+    spacing "," spacing
+  end
+
+  rule open_bracket
+    spacing "{" spacing
+  end
+
+  rule close_bracket
+    spacing "}" spacing
+  end
+
+  rule spaces
+    [ \t\n]*
+  end
+
+  rule spacing
+    [ \t\n]*
+  end
+
+end
