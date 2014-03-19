@@ -4,16 +4,6 @@ namespace :db do
   DB_CONFIG = RQP2::DATABASE_CONFIG
   SEQUEL_DB = RQP2::SEQUEL_DATABASE
 
-  def pg_cmd(cmd)
-    "#{cmd}"
-  end
-
-  def shell(*cmds)
-    cmd = cmds.join("\n")
-    puts cmd
-    system cmd
-  end
-
   desc "Drops the database (USE WITH CARE)"
   task :drop do
     shell pg_cmd("dropdb #{DB_CONFIG['database']}"),

@@ -1,6 +1,16 @@
 $LOAD_PATH.unshift(File.expand_path('../lib', __FILE__))
 require 'rqp2'
 
+def pg_cmd(cmd)
+  "#{cmd}"
+end
+
+def shell(*cmds)
+  cmd = cmds.join("\n")
+  puts cmd
+  system cmd
+end
+
 #
 # Install all tasks found in tasks folder
 #
