@@ -24,7 +24,9 @@ module RQP2
           end
 
           # load files in order
-          files = folder.glob("*.json").reject{|f| f.basename.to_s =~ /^metadata/ }.sort
+          files = folder.glob("*.*").reject{|f|
+            f.basename.to_s =~ /^metadata/
+          }.sort
           names = files.map{|f|
             f.basename.rm_ext.to_s[/^\d+-(.*)/, 1].gsub(/-/, '_')
           }

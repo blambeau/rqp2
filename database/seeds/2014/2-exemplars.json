@@ -1,0 +1,7 @@
+[
+  {
+    "exemplar": "suppliers-and-parts",
+    "name": "Suppliers and Parts database",
+    "description": "The Suppliers and Parts database is an example relational database that is referred to extensively in the literature and described in detail in C. J. Date's \"Introduction to Database Systems\" textbook. It is a simple database comprising three tables: Supplier, Part and Shipment, and is often used as a minimal exemplar of the interrelationships found in a database.\n\A short introduction to this database can be found at http://en.wikipedia.org/wiki/Suppliers_and_Parts_database."
+  }
+]

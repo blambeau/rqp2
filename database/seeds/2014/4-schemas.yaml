@@ -1,0 +1,46 @@
+---
+- exemplar: suppliers-and-parts
+  language: tutorial-d
+  formaldef: |-
+    TYPE S#     POSSREP {SNUM CHAR};
+    TYPE NAME   POSSREP {NAME CHAR};
+    TYPE P#     POSSREP {PNUM CHAR};
+    TYPE COLOR  POSSREP {COLOR CHAR};
+    TYPE WEIGHT POSSREP {WEIGHT RATIONAL};
+
+    VAR SUPPLIERS BASE RELATION {SID S#, NAME NAME, STATUS INTEGER, CITY CHAR} KEY {SID};
+    VAR PARTS     BASE RELATION {PID P#, NAME NAME, COLOR COLOR, WEIGHT WEIGHT, CITY CHAR} KEY {PID};
+    VAR SHIPMENTS BASE RELATION {SID S#, PID P#, QTY INTEGER} KEY {SID, PID};
+
+    CONSTRAINT C1 SHIPMENTS {SID} <= SUPPLIERS {SID};
+    CONSTRAINT C2 SHIPMENTS {PID} <= PARTS {PID};
+- exemplar: suppliers-and-parts
+  language: sql
+  formaldef: |-
+    DROP TABLE IF EXISTS shipments CASCADE;
+    DROP TABLE IF EXISTS suppliers CASCADE;
+    DROP TABLE IF EXISTS parts CASCADE;
+
+    CREATE TABLE suppliers (
+      sid    VARCHAR(3) PRIMARY KEY,
+      name   VARCHAR(20),
+      status INTEGER,
+      city   VARCHAR(20)
+    );
+
+    CREATE TABLE parts (
+      pid    VARCHAR(3) PRIMARY KEY,
+      name   VARCHAR(20),
+      color  VARCHAR(10),
+      weight FLOAT,
+      city   VARCHAR(20)
+    );
+
+    CREATE TABLE shipments (
+      sid VARCHAR(3),
+      pid VARCHAR(3),
+      qty INTEGER,
+      PRIMARY KEY (sid, pid),
+      FOREIGN KEY (sid) REFERENCES suppliers (sid),
+      FOREIGN KEY (pid) REFERENCES parts (pid)
+    );
