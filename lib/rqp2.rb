@@ -15,6 +15,22 @@ module RQP2
     end
   end
 
+  # Returns a configuration object for a particular environment
+  def self.db_config_for(environment)
+    unless (env = environment.split('/')).size >= 1
+      raise ArgumentError, "Invalid environment"
+    end
+    unless DATABASE_CONFIG_FILE.exists?
+      raise "Missing database.yml config"
+    end
+
+    env.reduce(DATABASE_CONFIG_FILE.load) do |config, e|
+      cfg = config[e]
+      raise "No database for environment `#{environment}`" unless cfg
+      cfg
+    end
+  end
+
   # Version of the software component
   VERSION = "0.1.0"
 
@@ -43,9 +59,7 @@ module RQP2
   DATABASE_CONFIG_FILE = CONFIG_FOLDER/'database.yml'
 
   # What database configuration to use
-  DATABASE_CONFIG = ENV['DATABASE_URL'] \
-                 || (DATABASE_CONFIG_FILE.exists? && DATABASE_CONFIG_FILE.load[ENVIRONMENT]) \
-                 || raise("Unable to find database configuration under `#{ENVIRONMENT}`")
+  DATABASE_CONFIG = ENV['DATABASE_URL'] || db_config_for(ENVIRONMENT)
 
   # Sequel database object (for connection pooling)
   SEQUEL_DATABASE = ::Sequel.connect(DATABASE_CONFIG)
