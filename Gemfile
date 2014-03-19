@@ -8,6 +8,7 @@ gem "uuid"
 gem "pg"
 gem "alf"
 gem "quickl"
+gem "citrus"
 
 group "development" do
   gem "rspec"

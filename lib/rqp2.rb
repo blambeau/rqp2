@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'uuid'
 require 'sequel'
 require 'alf'
+require 'citrus'
 
 # The Relational Query Puzzle Platform
 module RQP2
