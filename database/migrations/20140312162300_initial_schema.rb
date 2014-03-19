@@ -29,7 +29,8 @@ Sequel.migration do
         puzzle        VARCHAR(5)  NOT NULL REFERENCES puzzles (puzzle),
         language      VARCHAR(20) NOT NULL REFERENCES languages (language),
         position      INTEGER     NOT NULL CHECK (position >= 0),
-        expression    TEXT        NOT NULL CHECK (expression <> '')
+        expression    TEXT        NOT NULL CHECK (expression <> ''),
+        UNIQUE (submission, puzzle, language, position)
       );
     SQL
   end
