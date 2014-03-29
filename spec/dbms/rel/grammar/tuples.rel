@@ -1,0 +1,3 @@
+RELATION {
+  TUPLE {SID S#("S1"), NAME NAME("Smith"), STATUS 20, CITY "London"}
+}
