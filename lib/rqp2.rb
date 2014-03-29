@@ -4,6 +4,7 @@ require 'uuid'
 require 'sequel'
 require 'alf'
 require 'citrus'
+require 'logger'
 
 # The Relational Query Puzzle Platform
 module RQP2
@@ -60,12 +61,15 @@ module RQP2
 
   # What database configuration to use
   DATABASE_CONFIG = ENV['DATABASE_URL'] || db_config_for(ENVIRONMENT)
+  #DATABASE_CONFIG.merge!(loggers: [ Logger.new(STDOUT) ])
 
   # Sequel database object (for connection pooling)
   SEQUEL_DATABASE = ::Sequel.connect(DATABASE_CONFIG)
 
   # Alf database object
-  ALF_DATABASE = ::Alf.database(SEQUEL_DATABASE)
+  ALF_DATABASE = ::Alf.database(SEQUEL_DATABASE, {
+    schema_cache: true
+  })
 
   # UUID
   UUID_GENERATOR = ::UUID.new
