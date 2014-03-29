@@ -30,7 +30,7 @@ module RQP2
       end
 
       def query(src)
-        Alf::Relation(@sequel_db[src])
+        Alf::Relation(@sequel_db[src].to_a)
       end
 
     end # class SQL
