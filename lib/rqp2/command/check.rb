@@ -10,6 +10,11 @@ module RQP2
 
       # Parse the options
       options do |opt|
+
+        @queries = false
+        opt.on('--queries', 'Check the queries agains a DBMS') do
+          @queries = true
+        end
       end
 
       # Command execution
@@ -23,7 +28,26 @@ module RQP2
         $stderr.puts "Submission is valid according to XSD schema."
 
         # Convert to data now
-        puts Submission.xml(file).to_data.inspect
+        check_queries(file) if @queries
+      end
+
+      def check_queries(file)
+        dbmses = Hash.new{|h,k| h[k] = DBMS.for(k) }
+
+        Submission.xml(file).to_data[:answers].each do |answer|
+          answer = Tuple(answer)
+
+          outcome = begin
+            dbms = dbmses[answer.language]
+            dbms.query(answer.expression)
+            "ok"
+          rescue => ex
+            ex.message
+          end
+          puts "#{answer.puzzle}/#{answer.language}: #{outcome}"
+        end
+      ensure
+        dbmses.each_value{|dbms| dbms.disconnect } if dbmses
       end
 
     end # class Check

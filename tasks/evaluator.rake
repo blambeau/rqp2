@@ -1,7 +1,7 @@
 namespace :evaluator do
 
   def evaluator_config
-    RQP2.db_config_for('evaluator/sql')
+    RQP2.db_config_for('languages/sql')
   end
 
   desc "Uninstall the evaluator"

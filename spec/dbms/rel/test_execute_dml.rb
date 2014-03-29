@@ -3,12 +3,8 @@ module RQP2
   class DBMS
     describe Rel, 'execute_dml' do
 
-      let(:config) {
-        RQP2.db_config_for("evaluator/rel")
-      }
-
       let(:dbms){
-        Rel.connect(config)
+        DBMS.for('tutorial-d')
       }
 
       before do

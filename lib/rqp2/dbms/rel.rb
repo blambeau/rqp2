@@ -11,6 +11,10 @@ module RQP2
         @connection.connect
       end
 
+      def self.language
+        'tutorial-d'
+      end
+
       def self.connect(connspec)
         Rel.new(connspec)
       end

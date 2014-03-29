@@ -6,6 +6,10 @@ module RQP2
         @sequel_db = sequel_db
       end
 
+      def self.language
+        'sql'
+      end
+
       def self.connect(connspec)
         unless connspec.is_a?(Sequel::Database)
           connspec = ::Sequel.connect(connspec)

@@ -3,16 +3,8 @@ module RQP2
   class DBMS
     describe SQL, 'execute_dml' do
 
-      let(:config) {
-        RQP2.db_config_for("evaluator/sql")
-      }
-
-      let(:sequel_db) {
-        ::Sequel.connect(config)
-      }
-
       let(:dbms){
-        SQL.connect(sequel_db)
+        DBMS.for('sql')
       }
 
       before do

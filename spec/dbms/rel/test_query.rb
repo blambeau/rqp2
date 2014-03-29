@@ -3,12 +3,8 @@ module RQP2
   class DBMS
     describe Rel, 'execute_dml' do
 
-      let(:config) {
-        RQP2.db_config_for("evaluator/rel")
-      }
-
       let(:dbms){
-        Rel.connect(config)
+        DBMS.for('tutorial-d')
       }
 
       before do
@@ -21,12 +17,24 @@ module RQP2
         dbms.disconnect
       end
 
-      subject do
-        dbms.query("SUPPLIERS{SID}")
+      context 'when the result is not empty' do
+        subject do
+          dbms.query("SUPPLIERS{SID}")
+        end
+
+        it 'should return the exepected relation' do
+          subject.should eq(Relation(sid: "S1"))
+        end
       end
 
-      it 'should return the exepected relation' do
-        subject.should eq(Relation(sid: "S1"))
+      context 'when the result is empty' do
+        subject do
+          dbms.query("SUPPLIERS WHERE SID=''")
+        end
+
+        it 'should return the exepected relation' do
+          subject.should be_empty
+        end
       end
 
     end
