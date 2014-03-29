@@ -53,6 +53,17 @@ grammar RQP2::DBMS::Rel::Grammar
   end
 
   rule scalar_literal
+      selector
+    | pure_literal
+  end
+
+  rule selector
+    (type_name '(' pure_literal ')') {
+      captures[:pure_literal].first.value
+    }
+  end
+
+  rule pure_literal
       string_literal
     | float_literal
     | integer_literal
@@ -97,13 +108,13 @@ grammar RQP2::DBMS::Rel::Grammar
   ### names
 
   rule attr_name
-    [a-zA-Z]+ {
+    [a-zA-Z_]+ {
       to_str.downcase.to_sym
     }
   end
 
   rule type_name
-    [a-zA-Z]+ {
+    [a-zA-Z#]+ {
       to_str.to_sym
     }
   end
