@@ -2,8 +2,7 @@
   {
     "puzzle": "S1",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "straightforward",
-    "stars": "1",
+    "level": 0,
     "description": "Get all suppliers.",
     "predicate": "Supplier with number `sid` is named `name`, has status `status` and is located in the city named `city`",
     "hints": "\"Get all...\" and \"Get ... (unqualified)\" means \"with all available attributes\"."
@@ -11,8 +10,7 @@
   {
     "puzzle": "S2",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "straightforward",
-    "stars": "1",
+    "level": 0,
     "description": "Get the number and name of suppliers.",
     "predicate": "Supplier with number `sid` is named `name`",
     "hints": "\"Get x, y, and z ...\" means \"x, y and z attributes only\"."
@@ -20,8 +18,7 @@
   {
     "puzzle": "S3",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "straightforward",
-    "stars": "1",
+    "level": 0,
     "description": "Get all but the status of suppliers.",
     "predicate": "(There exists a status such that) supplier with number `sid` is named `name` and is located in city named `city`",
     "hints": "\"Get all but x, y and z\" means \"all available attributes except x, y and z\""
@@ -29,8 +26,7 @@
   {
     "puzzle": "S4",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "straightforward",
-    "stars": "1",
+    "level": 0,
     "description": "Get the city names where at least one supplier is located.",
     "predicate": "(There exists a supplier, say s, ... such that)  s is located in city named `city`",
     "hints": "In accordance with relational theory, \"the city names\" means \"no duplicates\"."
@@ -38,8 +34,7 @@
   {
     "puzzle": "S5",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "straightforward",
-    "stars": "1",
+    "level": 0,
     "description": "Get suppliers with status in the range 15 to 25 inclusive.",
     "predicate": "[Supplier with number `sid` is named `name`, has status `status`, is located in city named `city`] and his status is in the range 15 to 25 inclusive",
     "hints": ""
@@ -47,8 +42,7 @@
   {
     "puzzle": "S6",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "straightforward",
-    "stars": "1",
+    "level": 0,
     "description": "Get suppliers located in London or Athens.",
     "predicate": "[...] and that city is named London or is named Athens",
     "hints": "[...] means \"the common predicate for the relation variable at hand\""
@@ -56,8 +50,7 @@
   {
     "puzzle": "S7",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "straightforward",
-    "stars": "1",
+    "level": 0,
     "description": "Get suppliers not located in London nor in Athens.",
     "predicate": "[...] and that city is not named London nor Athens",
     "hints": ""
@@ -65,8 +58,7 @@
   {
     "puzzle": "S8",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "straightforward",
-    "stars": "1",
+    "level": 0,
     "description": "Get supplier numbers for suppliers located in London.",
     "predicate": "Supplier with number `sid` is located in London",
     "hints": ""
@@ -74,8 +66,7 @@
   {
     "puzzle": "E1",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "easy",
-    "stars": "2",
+    "level": 1,
     "description": "Get supplier numbers for suppliers who supply part P1.",
     "predicate": "Supplier with number `sid` supplies the part whose number is P1",
     "hints": ""
@@ -83,8 +74,7 @@
   {
     "puzzle": "E2",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "easy",
-    "stars": "2",
+    "level": 1,
     "description": "Get how many shipments there are.",
     "predicate": "The total count of shipments is `c`",
     "hints": "The result is a single scalar. To keep the automation of  corrections simple enough, we want a relation with one single tuple and one single attribute named `c`."
@@ -92,8 +82,7 @@
   {
     "puzzle": "E3",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "easy",
-    "stars": "2",
+    "level": 1,
     "description": "Get how many parts are supplied by supplier S1.",
     "predicate": "Supplier whose number is S1 supplies `c` parts",
     "hints": "By convention, an unknown supplier supplies no part at all, accounting for zero."
@@ -101,8 +90,7 @@
   {
     "puzzle": "E4",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "easy",
-    "stars": "2",
+    "level": 1,
     "description": "Get suppliers who supply at least one part.",
     "predicate": "Supplier with number `sid` is named `name`, has status `status`, is located in the city named `city` and supplies at least one part (i.e. there exists a part number such that...)",
     "hints": ""
@@ -110,8 +98,7 @@
   {
     "puzzle": "E5",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "easy",
-    "stars": "2",
+    "level": 1,
     "description": "Get suppliers who supply no part at all.",
     "predicate": "Supplier with number `sid` [is named ...] and supplies no part at all (i.e. there does not exist...)",
     "hints": "negation, exists, forall"
@@ -119,8 +106,7 @@
   {
     "puzzle": "E6",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "easy",
-    "stars": "2",
+    "level": 1,
     "description": "Get shipments together with the name of the supplier (sname) and the name of the part (pname)",
     "predicate": "Supplier with number `sid` is named `sname` and ships the part with number `pid`, named `pname` in `qty` quantity.",
     "hints": ""
@@ -128,8 +114,7 @@
   {
     "puzzle": "M1",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "medium",
-    "stars": "4",
+    "level": 2,
     "description": "Get the `total` quantity of parts supplied by supplier S1.",
     "predicate": "Supplier whose number is S1 supplies parts for a total quantity of `total`",
     "hints": "By convention, an unknown supplier supplies no part at all, for a total quantity of zero. SQL may seem to lack consistency... Does Tutorial D do?"
@@ -137,8 +122,7 @@
   {
     "puzzle": "M2",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "medium",
-    "stars": "4",
+    "level": 2,
     "description": "Get part numbers for parts supplied by at least one supplier in Paris.",
     "predicate": "The exists at least one supplier located in Paris who supplies the part whose number is `pid`",
     "hints": ""
@@ -146,8 +130,7 @@
   {
     "puzzle": "M3",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "medium",
-    "stars": "4",
+    "level": 2,
     "description": "Get city names for cities in which at least two suppliers are located.",
     "predicate": "There exists at least two suppliers located in the city named `city`",
     "hints": "At least means \">=\""
@@ -155,8 +138,7 @@
   {
     "puzzle": "M4",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "medium",
-    "stars": "4",
+    "level": 2,
     "description": "Get supplier numbers for suppliers whose city is first in the alphabetic list of such cities.",
     "predicate": "Supplier with number `sid` is located in the city named `city` and that city name appears first in the alphabetic list of supplier cities.",
     "hints": ""
@@ -164,8 +146,7 @@
   {
     "puzzle": "M5",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "medium",
-    "stars": "4",
+    "level": 2,
     "description": "Get the supplier numbers and the `total` quantity of supplied parts for each of them.",
     "predicate": "Supplier with number `sid` supplies parts for a total quantity of `total`",
     "hints": "Including those who do not seem to supply any part"
@@ -173,8 +154,7 @@
   {
     "puzzle": "M6",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "medium",
-    "stars": "4",
+    "level": 2,
     "description": "Get the number(s) of lightest part(s). In case of ex-aequo, get all parts with that smallest weight.",
     "predicate": "Part with number `pid` has the smallest known weight among all parts",
     "hints": ""
@@ -182,8 +162,7 @@
   {
     "puzzle": "D1",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "difficult",
-    "stars": "8",
+    "level": 3,
     "description": "Get part numbers for parts not supplied by any supplier in Paris.",
     "predicate": "No supplier in Paris supplies the part with number `pid`",
     "hints": ""
@@ -191,8 +170,7 @@
   {
     "puzzle": "D2",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "difficult",
-    "stars": "8",
+    "level": 3,
     "description": "Get numbers of suppliers who supply all parts.",
     "predicate": "Supplier with number `sid` supplies all parts.",
     "hints": "What if no parts at all?"
@@ -200,8 +178,7 @@
   {
     "puzzle": "D3",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "difficult",
-    "stars": "8",
+    "level": 3,
     "description": "Get supplier for suppliers with a status strictly lower than of supplier S1.",
     "predicate": "Supplier with number `sid` is named [...] and has a status strictly lower than supplier with number S1",
     "hints": "What if supplier S1 does not exist?"
@@ -209,8 +186,7 @@
   {
     "puzzle": "D4",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "difficult",
-    "stars": "8",
+    "level": 3,
     "description": "Get supplier-number\/part-number pairs such that the indicated supplier does not supply the indicated part.",
     "predicate": "Supplier with number `sid` does not supply part with number `pid`",
     "hints": ""
@@ -218,8 +194,7 @@
   {
     "puzzle": "D5",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "difficult",
-    "stars": "8",
+    "level": 3,
     "description": "Get every known city together with the count of parts located in that city (`ps`), the count of suppliers located there (`ss`), and the total shipped quantity by the latter (`total`).",
     "predicate": "In city named `city`, there are `ps` located parts, `ss` located suppliers and a total quantity of `total` shipped parts by those suppliers.",
     "hints": "ALL known cities"
@@ -227,8 +202,7 @@
   {
     "puzzle": "D6",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "difficult",
-    "stars": "8",
+    "level": 3,
     "description": "Get the heaviest part. In case of ex-aequo, select the one with the smallest part number.",
     "predicate": "Part number `pid` is the first in the alphabetic list of (part numbers of) heaviest parts",
     "hints": ""
@@ -236,8 +210,7 @@
   {
     "puzzle": "H1",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "hard",
-    "stars": "16",
+    "level": 4,
     "description": "Get every city name where at least one part is located, together with the average supplier status in that city (`avg_status`). Do not include cities where no supplier is located.",
     "predicate": "At least one part is located in the the city named `city` and that city has located suppliers for an average status of `avg_status`",
     "hints": ""
@@ -245,8 +218,7 @@
   {
     "puzzle": "H2",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "hard",
-    "stars": "16",
+    "level": 4,
     "description": "Get part numbers for parts supplied by all suppliers in London.",
     "predicate": "Part with number `pid` is supplied by all suppliers located in London",
     "hints": ""
@@ -254,8 +226,7 @@
   {
     "puzzle": "H3",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "hard",
-    "stars": "16",
+    "level": 4,
     "description": "Get all pairs of supplier numbers, say sx and sy, such that sx and sy supply exactly the same set of parts each.",
     "predicate": "Supplier with number `sx` supplies the same parts as supplier with number `sy`.",
     "hints": "\"the same parts\" means the same set of part numbers, that is, abstracting from quantities. We require here supplier numbers to be distinct (i.e. sx <> sy) and consider ordered pairs, that is, (sx=S1,sy=S2) is different than (sx=S2,sy=S1)."
@@ -263,8 +234,7 @@
   {
     "puzzle": "H4",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "hard",
-    "stars": "16",
+    "level": 4,
     "description": "Get all pairs of part numbers (as `p` and `q`) such that some supplier supplies both of the indicated parts.",
     "predicate": "There exists a supplier supplying both part with number `p`  and part with number `q`",
     "hints": "We require here part numbers to be distinct (i.e. p <> q) and consider ordered pairs, that is, (p=P1,q=P2) is different than (p=P2,q=P1)."
@@ -272,8 +242,7 @@
   {
     "puzzle": "H5",
     "exemplar": "suppliers-and-parts",
-    "difficulty": "hard",
-    "stars": "16",
+    "level": 4,
     "description": "Get supplier numbers for suppliers supplying at least as many parts as the three \"best\" suppliers (in terms of supplied quantities), together with their respective total quantity.",
     "predicate": "With a total quantity of supplied parts `total`, supplier with number `sid` is among those who supply the three largest total quantities of parts.",
     "hints": "The result does not necessarily contain three tuples; it might contain more (why?), or less (why?)."
