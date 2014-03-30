@@ -1,0 +1,92 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>LINGI2172 - Mission 2 - ${name}</title>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  .puzzle-block { padding-top: 50px; }
+  .student-block { padding-top: 50px; }
+  .puzzle { border-top: 2px solid #222222; padding-top: 10px; padding-bottom: 10px; }
+  .clear { clear: both; }
+  .success { color: green; }
+  .failure { color: red; }
+  .ignored { color: #888888; }
+  .menu { position: fixed; top: 5px; }
+  tr.failure { background-color: red; color: white; }
+  .menu li.success a { color: green; }
+  .menu li.failure a { color: red; }
+  .menu li.partial a { color: orange; }
+  @page { margin: 1cm; }
+  @media print {
+    .menu { display: none; }
+    body { font-size: 10px; }
+    pre { font-size: 8px; overflow: hidden; }
+    .puzzle-block { padding-top: 0px; page-break-after:always; }
+    .student-block { padding-top: 0px; }
+  }
+  </style>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class='container'>
+    <div class='menu'>
+      <ul class="pagination pagination-sm">
+        *{puzzles}{
+          <li class="${status}"><a href="#${puzzle}">${puzzle}</a></li>
+        }
+      </ul>
+    </div>
+    <div class='row student-block'>
+      <h1>
+        <span class='pull-left'>${name} &mdash; ${noma}</span>
+        <span class='pull-right'>${score} / 172 &mdash; ${evaluation}</span>
+        <div class='clear'></div>
+      </h1>
+    </div>
+    *{puzzles}{
+      <div class='puzzle-block' id="${puzzle}">
+        <div class='row'>
+          <h2 class='puzzle'>
+            <span class='pull-left'>Puzzle ${puzzle}</span>
+            <span class='pull-right'>${difficulty} &mdash; .{earned_stars} / .{stars} star(s)</span>
+            <div class='clear'></div>
+          </h2>
+        </div>
+        <div class='row'>
+          <pre>${description}</pre>
+        </div>
+        <div class='row'>
+          <pre>${predicate}</pre>
+        </div>
+        *{answers}{
+          <div class='row'>
+            <h3>
+              <span class='pull-left'>${language}</span>
+              <span class='pull-right @{self}'>.{earned_stars} star(s) earned</span>
+              <div class='clear'></div>
+            </h3>
+          </div>
+          <div class='row'>
+            <pre>${expression}</pre>
+          </div>
+          <div class='row'>
+            <table class='table'>
+              *{details}{
+                <tr class='@{self}'>
+                  <td>${dataset}</td>
+                  <td>${outcome}</td>
+                  <td><pre>${details}</pre></td>
+                </tr>
+              }
+            </table>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</body>
+</html>
