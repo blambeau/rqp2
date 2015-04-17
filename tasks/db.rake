@@ -33,4 +33,16 @@ namespace :db do
   end
   task :rebuild => [ :create, :migrate ]
 
+  desc "Spy the database schema"
+  task :spy do
+    require 'path'
+    vendor = Path.dir.parent/'vendor'
+    pgjar  = vendor.glob("*postgresql*.jar").first
+    spyjar = vendor.glob("*schemaSpy*.jar").first
+    cmd = %Q{
+      java -jar #{spyjar} -dp #{pgjar} -t pgsql -host localhost -u rqp2 -db rqp2 -s public -o database/spy
+    }
+    system(cmd)
+  end
+
 end
