@@ -5,6 +5,7 @@ require 'sequel'
 require 'alf'
 require 'citrus'
 require 'logger'
+require 'wlang'
 
 # The Relational Query Puzzle Platform
 module RQP2
@@ -79,3 +80,4 @@ require_relative 'rqp2/submission'
 require_relative 'rqp2/database'
 require_relative 'rqp2/dbms'
 require_relative 'rqp2/tester'
+require_relative 'rqp2/reporter'
