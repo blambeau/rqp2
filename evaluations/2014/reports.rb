@@ -91,5 +91,4 @@ data.each do |tuple|
   target = tuple.name.gsub(/\s+/, '_') + ".html"
   report = Dialect.render(Path.dir/'report.wlang', tuple)
   (Path.dir/target).write report
-  `prince #{target}`
 end

@@ -84,6 +84,7 @@ class Tester
     begin
       rel1 = dbms.query(test.expression1)
     rescue => ex
+      puts test.inspect
       return { outcome: "failure", details: ex.message }
     end
 
