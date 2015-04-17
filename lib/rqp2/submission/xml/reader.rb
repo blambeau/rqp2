@@ -32,7 +32,7 @@ module RQP2
           answers = []
           doc.xpath("//answers/puzzle").each do |puzzle|
             puzzle.xpath("answer").each_with_index do |answer, index|
-              expression = answer.text.to_s.strip
+              expression = strip(answer.text.to_s)
               answers << {
                 puzzle:   puzzle['id'].to_s,
                 language: answer['language'].to_s,
@@ -42,6 +42,15 @@ module RQP2
             end
           end
           answers
+        end
+
+        def strip(s)
+          s = s.gsub(/\t/, '    ')
+          if s =~ /\A[ ]*\n(\s+)/
+            s.gsub(/^#{$1}/, '').strip
+          else
+            s
+          end
         end
 
       end # class Reader
