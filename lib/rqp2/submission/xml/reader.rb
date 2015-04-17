@@ -23,8 +23,9 @@ module RQP2
 
         def parse_student
           {
-            name: doc.xpath("//student/name").text,
-            noma: doc.xpath("//student/noma").text,
+            name:  doc.xpath("//student/name").text,
+            noma:  doc.xpath("//student/noma").text,
+            email: doc.xpath("//student/email").text,
           }
         end
 

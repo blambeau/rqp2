@@ -25,7 +25,7 @@ module RQP2
 
         # First check with the validator
         Submission::XML::Validator.new.call(file)
-        $stderr.puts "Submission is valid according to XSD schema."
+        $stderr.puts "Valid according to XSD schema: #{file.basename}"
 
         # Convert to data now
         check_queries(file) if @queries
