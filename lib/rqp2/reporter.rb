@@ -42,7 +42,7 @@ module RQP2
         bigjoin = join(bigjoin, details)
 
         bigjoin = group(bigjoin,
-          [ :submission, :student, :noma, :name, :evaluation, :score, :grade,
+          [ :submission, :student, :noma, :name, :email, :evaluation, :score, :grade,
             :puzzle, :difficulty, :level, :stars, :predicate, :description],
           :answers, allbut: true)
         bigjoin = extend(bigjoin,
@@ -63,7 +63,7 @@ module RQP2
         })
 
         bigjoin = group(bigjoin,
-          [ :submission, :student, :noma, :name, :evaluation, :score, :grade, ], :puzzles, allbut: true)
+          [ :submission, :student, :noma, :name, :email, :evaluation, :score, :grade, ], :puzzles, allbut: true)
         bigjoin = extend(bigjoin, puzzles: ->(t){ t.puzzles.to_a(order: [:level, :puzzle])})
       }
     ensure

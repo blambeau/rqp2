@@ -6,6 +6,7 @@ require 'alf'
 require 'citrus'
 require 'logger'
 require 'wlang'
+require 'mail'
 
 # The Relational Query Puzzle Platform
 module RQP2
@@ -18,17 +19,17 @@ module RQP2
   end
 
   # Returns a configuration object for a particular environment
-  def self.db_config_for(environment)
+  def self.config_for(environment, basefile)
     unless (env = environment.split('/')).size >= 1
       raise ArgumentError, "Invalid environment"
     end
-    unless DATABASE_CONFIG_FILE.exists?
-      raise "Missing database.yml config"
+    unless basefile.exists?
+      raise "Missing #{basefile.basename}"
     end
 
-    env.reduce(DATABASE_CONFIG_FILE.load) do |config, e|
+    env.reduce(basefile.load) do |config, e|
       cfg = config[e]
-      raise "No database for environment `#{environment}`" unless cfg
+      raise "No config for environment `#{environment}`" unless cfg
       cfg
     end
   end
@@ -61,7 +62,7 @@ module RQP2
   DATABASE_CONFIG_FILE = CONFIG_FOLDER/'database.yml'
 
   # What database configuration to use
-  DATABASE_CONFIG = ENV['DATABASE_URL'] || db_config_for(ENVIRONMENT)
+  DATABASE_CONFIG = ENV['DATABASE_URL'] || config_for(ENVIRONMENT, DATABASE_CONFIG_FILE)
   #DATABASE_CONFIG.merge!(loggers: [ Logger.new(STDOUT) ])
 
   # Sequel database object (for connection pooling)
@@ -71,6 +72,19 @@ module RQP2
   ALF_DATABASE = ::Alf.database(SEQUEL_DATABASE, {
     schema_cache: true
   })
+
+  # Mail configuration file, if any
+  MAIL_CONFIG_FILE = CONFIG_FOLDER/'mail.yml'
+
+  # What mail configuration to use
+  MAIL_CONFIG = config_for(ENVIRONMENT, MAIL_CONFIG_FILE)
+
+  # Configure the mail service
+  Mail.defaults do
+    delivery_method \
+      MAIL_CONFIG.delete("delivery_method").to_sym,
+      Alf::Support.symbolize_keys(MAIL_CONFIG)
+  end
 
   # UUID
   UUID_GENERATOR = ::UUID.new

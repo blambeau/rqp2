@@ -52,6 +52,9 @@ GEM
     hike (1.2.3)
     macaddr (1.6.1)
       systemu (~> 2.5.0)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
+    mime-types (2.4.3)
     mini_portile (0.5.2)
     multi_json (1.8.4)
     myrrha (3.0.0)
@@ -106,6 +109,7 @@ PLATFORMS
 DEPENDENCIES
   alf
   citrus
+  mail (~> 2.6)
   nokogiri
   path
   pg

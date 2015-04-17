@@ -9,6 +9,7 @@ gem "pg"
 gem "alf"
 gem "quickl"
 gem "citrus"
+gem 'mail', '~> 2.6'
 
 group "development" do
   gem "rspec"

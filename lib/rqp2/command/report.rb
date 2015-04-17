@@ -11,13 +11,21 @@ module RQP2
       def initialize(*args)
         super
         @year = Time.now.year
+        @send_email = false
       end
       attr_reader :year
+
+      def send_email?
+        !!@send_email
+      end
 
       # Parse the options
       options do |opt|
         opt.on('--year=YEAR') do |year|
           @year = Integer(year)
+        end
+        opt.on('--send-email') do
+          @send_email = true
         end
       end
 
@@ -30,8 +38,30 @@ module RQP2
 
         Reporter.new(year: @year).each_report do |tuple, report|
           puts "Reporting for #{tuple.name} (#{year})"
+
+          # write it to a file
           target = tuple.name.gsub(/\s+/, '_') + ".html"
-          (to_dir/target).write report
+          target = to_dir/target
+          target.write report
+
+          # send an email if required
+          send_email(tuple, target) if send_email?
+        end
+      end
+
+      def send_email(tuple, target)
+        puts "Sending report to #{tuple.email}"
+
+        Mail.deliver do
+          from    'blambeau@gmail.com'
+          to      tuple.email.to_s
+          cc      'bernard.lambeau@uclouvain.be'
+          subject "[INGI2172] submission feedback for Mission 2"
+          html_part do
+            content_type 'text/html; charset=UTF-8'
+            body WLang::Html.render(Path.dir/'report.email', {})
+          end
+          add_file target.to_s
         end
       end
 
