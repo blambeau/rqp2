@@ -50,8 +50,15 @@ module RQP2
 
       # Imports a new student and returns the corresponding UUID
       def import_student(student)
-        student.merge(student: UUID.generate).tap do |tuple|
-          conn.relvar(:students).insert(tuple)
+        existing = conn
+          .relvar(:students)
+          .restrict(noma: student[:noma])
+        if existing.empty?
+          stu = student.merge(student: UUID.generate)
+          conn.relvar(:students).insert(stu)
+          stu
+        else
+          stu = existing.tuple_extract
         end
       end
 
