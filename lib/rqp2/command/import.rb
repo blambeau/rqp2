@@ -1,6 +1,6 @@
 module RQP2
   class Command
-    # 
+    #
     # Import some student submissions
     #
     # SYNOPSIS

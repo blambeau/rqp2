@@ -1,6 +1,6 @@
 module RQP2
   class Command
-    # 
+    #
     # Check a student submission
     #
     # SYNOPSIS
@@ -19,9 +19,9 @@ module RQP2
 
       # Command execution
       def execute(args)
-        raise Quickl::ArgumentError unless args.size == 1
+        raise Quickl::InvalidArgument unless args.size == 1
         file = Path(args.first)
-        raise Quickl::ArgumentError unless file.exists?
+        raise Quickl::InvalidArgument unless file.exists?
 
         # First check with the validator
         Submission::XML::Validator.new.call(file)

@@ -18,7 +18,7 @@ module RQP2
 
     # Install options
     options do |opt|
-    
+
       # Show the help and exit
       opt.on_tail("--help", "Show help") do
         raise Quickl::Help
