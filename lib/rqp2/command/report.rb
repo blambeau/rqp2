@@ -27,6 +27,9 @@ module RQP2
         opt.on('--send-email') do
           @send_email = true
         end
+        opt.on('--bypass=FILE') do |bypass|
+          @bypass = Path(bypass).read
+        end
       end
 
       # Command execution
@@ -37,22 +40,31 @@ module RQP2
         to_dir.mkdir_p
 
         Reporter.new(year: @year).each_report do |tuple, report|
-          puts "Reporting for #{tuple.name} (#{year})"
-
-          # write it to a file
-          target = tuple.name.gsub(/\s+/, '_') + ".html"
-          target = to_dir/target
-          target.write report
-
-          # send an email if required
-          send_email(tuple, target) if send_email?
+          handle_report(tuple, report, to_dir)
         end
+      end
+
+      def handle_report(tuple, report, to_dir)
+        if bypass?(tuple)
+          puts "Bypassing #{tuple.name} (#{tuple.email})"
+          return
+        end
+
+        puts "Reporting for #{tuple.name} (#{year})"
+
+        # write it to a file
+        target = tuple.name.gsub(/\s+/, '_') + ".html"
+        target = to_dir/target
+        target.write report
+
+        # send an email if required
+        send_email(tuple, target) if send_email?
       end
 
       def send_email(tuple, target)
         puts "Sending report to #{tuple.email}"
 
-        Mail.deliver do
+        mail = Mail.new do
           from    'blambeau@gmail.com'
           to      tuple.email.to_s
           cc      'bernard.lambeau@uclouvain.be'
@@ -63,6 +75,12 @@ module RQP2
           end
           add_file target.to_s
         end
+
+        mail.deliver!
+      end
+
+      def bypass?(tuple)
+        @bypass && @bypass.include?(tuple.email)
       end
 
     end # class Report
