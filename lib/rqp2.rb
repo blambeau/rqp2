@@ -78,3 +78,4 @@ end # module RQP2
 require_relative 'rqp2/submission'
 require_relative 'rqp2/database'
 require_relative 'rqp2/dbms'
+require_relative 'rqp2/tester'
