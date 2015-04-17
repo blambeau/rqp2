@@ -5,3 +5,5 @@ scripts
 submissions/**/*.xml
 submissions/**/*.html
 evaluations/**/*.html
+tmp
+database/spy
