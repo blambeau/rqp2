@@ -13,8 +13,17 @@ module RQP2
       attr_reader :submission
       attr_reader :answers
 
+      def initialize(*args)
+        super
+        @submission_year = Time.now.year
+      end
+      attr_reader :submission_year
+
       # Parse the options
       options do |opt|
+        opt.on('--year=YEAR') do |year|
+          @submission_year = year.to_i
+        end
       end
 
       # Command execution
@@ -47,10 +56,11 @@ module RQP2
       end
 
       def import_submission(submission)
-        { 
+        {
           submission: UUID.generate,
           student: student[:student],
-          submitted_at: Time.now
+          submitted_at: Time.now,
+          year: submission_year
         }.tap do |tuple|
           conn.relvar(:submissions).insert(tuple)
         end
