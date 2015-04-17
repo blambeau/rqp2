@@ -34,6 +34,10 @@ module RQP2
     end
   end
 
+  def self.db_config_for(env)
+    config_for(env, DATABASE_CONFIG_FILE)
+  end
+
   # Version of the software component
   VERSION = "0.1.0"
 
