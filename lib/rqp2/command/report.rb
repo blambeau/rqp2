@@ -10,10 +10,10 @@ module RQP2
 
       def initialize(*args)
         super
-        @year = Time.now.year
+        @focus = { year: Time.now.year }
         @send_email = false
       end
-      attr_reader :year
+      attr_reader :focus
 
       def send_email?
         !!@send_email
@@ -22,7 +22,10 @@ module RQP2
       # Parse the options
       options do |opt|
         opt.on('--year=YEAR') do |year|
-          @year = Integer(year)
+          focus[:year] = Integer(year)
+        end
+        opt.on('--submission=UUID') do |uuid|
+          focus[:submission] = uuid
         end
         opt.on('--send-email') do
           @send_email = true
@@ -36,10 +39,10 @@ module RQP2
       def execute(args)
         raise Quickl::InvalidArgument if args.size > 0
 
-        to_dir = ROOT_FOLDER/'evaluations'/year.to_s
+        to_dir = ROOT_FOLDER/'evaluations'/focus[:year].to_s
         to_dir.mkdir_p
 
-        Reporter.new(year: @year).each_report do |tuple, report|
+        Reporter.new(focus).each_report do |tuple, report|
           handle_report(tuple, report, to_dir)
         end
       end
@@ -50,7 +53,7 @@ module RQP2
           return
         end
 
-        puts "Reporting for #{tuple.name} (#{year})"
+        puts "Reporting for #{tuple.name} (#{tuple.email})"
 
         # write it to a file
         target = tuple.name.gsub(/\s+/, '_') + ".html"
