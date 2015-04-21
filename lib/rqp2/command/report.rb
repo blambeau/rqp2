@@ -10,7 +10,7 @@ module RQP2
 
       def initialize(*args)
         super
-        @focus = { year: Time.now.year }
+        @focus = { submission_year: Time.now.year }
         @send_email = false
       end
       attr_reader :focus
@@ -22,7 +22,7 @@ module RQP2
       # Parse the options
       options do |opt|
         opt.on('--year=YEAR') do |year|
-          focus[:year] = Integer(year)
+          focus[:submission_year] = Integer(year)
         end
         opt.on('--submission=UUID') do |uuid|
           focus[:submission] = uuid
@@ -39,7 +39,7 @@ module RQP2
       def execute(args)
         raise Quickl::InvalidArgument if args.size > 0
 
-        to_dir = ROOT_FOLDER/'evaluations'/focus[:year].to_s
+        to_dir = ROOT_FOLDER/'evaluations'/focus[:submission_year].to_s
         to_dir.mkdir_p
 
         Reporter.new(focus).each_report do |tuple, report|

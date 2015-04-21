@@ -67,7 +67,7 @@ module RQP2
           submission: UUID.generate,
           student: student[:student],
           submitted_at: Time.now,
-          year: submission_year
+          submission_year: submission_year
         }.tap do |tuple|
           conn.relvar(:submissions).insert(tuple)
         end

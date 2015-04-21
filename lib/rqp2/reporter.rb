@@ -4,7 +4,7 @@ module RQP2
     attr_reader :db
 
     def initialize(focus = nil)
-      @focus = focus || { year: Time.now.year.to_i }
+      @focus = focus || { submission_year: Time.now.year.to_i }
     end
     attr_reader :focus
 
