@@ -1,0 +1,14 @@
+development:
+  adapter:  postgres
+  user:     rqp2
+  host:     localhost
+  database: rqp2
+languages:
+  'sql':
+    adapter:  postgres
+    user:     rqp2
+    host:     localhost
+    database: rqp2_evaluator
+  'tutorial-d':
+    host: localhost
+    port: 5514
