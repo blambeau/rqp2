@@ -22,6 +22,8 @@ module RQP2
       def execute(args)
         raise Quickl::InvalidArgument  if args.size > 0
         Tester.new(against).call
+      rescue => ex
+        $stderr.puts "Unable to test submissions\n  #{ex.message}"
       end
 
     end # class Test

@@ -23,6 +23,8 @@ module RQP2
         me            = restrict(students, against)
         my_submission = matching(submissions, project(me, [:student]))
       }[:submission]
+    rescue Alf::NoSuchTupleError
+      raise "Unable to find the submission to test against (#{against})"
     end
 
     def tests

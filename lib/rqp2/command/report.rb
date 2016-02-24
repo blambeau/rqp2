@@ -53,7 +53,7 @@ module RQP2
           return
         end
 
-        puts "Reporting for #{tuple.name} (#{tuple.email})"
+        puts "Reporting for #{tuple.name} (#{tuple.email}) in #{to_dir}"
 
         # write it to a file
         target = tuple.name.gsub(/\s+/, '_') + ".html"

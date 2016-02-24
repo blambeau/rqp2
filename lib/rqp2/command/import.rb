@@ -46,6 +46,8 @@ module RQP2
         @student    = import_student(data[:student])
         @submission = import_submission(data)
         @answers    = import_answers(data[:answers])
+      rescue => ex
+        $stderr.puts "Unable to import #{file.basename}\n  #{ex.message}"
       end
 
       # Imports a new student and returns the corresponding UUID
