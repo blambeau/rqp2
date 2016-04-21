@@ -24,12 +24,12 @@ namespace :db do
 
   desc "Seed the database (USE WITH CARE)"
   task :seed, :from do |t,args|
-    RQP2::Database::Seeder.call(args[:from] || '2014')
+    RQP2::Database::Seeder.call(args[:from] || Time.now.year.to_s)
   end
 
   desc "Rebuild the database (USE WITH CARE)"
   task :rebuild, :from do |t,args|
-    RQP2::Database::Seeder.call(args[:from] || '2014')
+    RQP2::Database::Seeder.call(args[:from] || Time.now.year.to_s)
   end
   task :rebuild => [ :create, :migrate ]
 
