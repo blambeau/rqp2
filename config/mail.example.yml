@@ -7,3 +7,6 @@ development:
   password:
   authentication: plain
   enable_starttls_auto: true
+  from: 
+  replyto: 
+  emailsignature: 

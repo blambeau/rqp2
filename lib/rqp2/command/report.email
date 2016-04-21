@@ -1,4 +1,4 @@
-<p>Hello,</p>
+<p>Hello ${name},</p>
 
 <p>Please find attached the automated report generated when evaluating your
 submission to LINGI2172's Mission 2</p>
@@ -10,4 +10,4 @@ question, or if something is wrong.</p>
 open the attached report through them. You should probably download it and
 open it in a browser then!</p>
 
-<p>Bernard Lambeau</b>
+<p>${signature}</b>
