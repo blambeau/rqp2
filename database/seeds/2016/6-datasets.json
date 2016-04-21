@@ -1,0 +1,17 @@
+[
+  {
+    "exemplar": "suppliers-and-parts",
+    "dataset": "base",
+    "description": "Usual database value example"
+  },
+  {
+    "exemplar": "suppliers-and-parts",
+    "dataset": "empty",
+    "description": "All relvars are empty"
+  },
+  {
+    "exemplar": "suppliers-and-parts",
+    "dataset": "no-shipments",
+    "description": "Suppliers and parts as in `base` but shipments are empty."
+  }
+]

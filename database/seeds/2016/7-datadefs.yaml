@@ -1,0 +1,140 @@
+---
+- exemplar: suppliers-and-parts
+  dataset: base
+  language: tutorial-d
+  formaldef: |-
+    DELETE SHIPMENTS;
+    DELETE PARTS;
+    DELETE SUPPLIERS;
+    
+    SUPPLIERS := RELATION {
+      TUPLE {SID S#("S1"), NAME NAME("Smith"), STATUS 20, CITY "London"},
+      TUPLE {SID S#("S2"), NAME NAME("Jones"), STATUS 10, CITY "Paris"},
+      TUPLE {SID S#("S3"), NAME NAME("Blake"), STATUS 30, CITY "Paris"},
+      TUPLE {SID S#("S4"), NAME NAME("Clark"), STATUS 20, CITY "London"},
+      TUPLE {SID S#("S5"), NAME NAME("Adams"), STATUS 30, CITY "Athens"}
+    };
+    
+    PARTS := RELATION {
+      TUPLE {PID P#("P1"), NAME NAME("Nut"),   COLOR COLOR("Red"),   WEIGHT 12.0, CITY "London"},
+      TUPLE {PID P#("P2"), NAME NAME("Bolt"),  COLOR COLOR("Green"), WEIGHT 17.0, CITY "Paris"},
+      TUPLE {PID P#("P3"), NAME NAME("Screw"), COLOR COLOR("Blue"),  WEIGHT 17.0, CITY "Oslo"},
+      TUPLE {PID P#("P4"), NAME NAME("Screw"), COLOR COLOR("Red"),   WEIGHT 14.0, CITY "London"},
+      TUPLE {PID P#("P5"), NAME NAME("Cam"),   COLOR COLOR("Blue"),  WEIGHT 12.0, CITY "Paris"},
+      TUPLE {PID P#("P6"), NAME NAME("Cog"),   COLOR COLOR("Red"),   WEIGHT 19.0, CITY "London"},
+      TUPLE {PID P#("P7"), NAME NAME("Cheese"),COLOR COLOR("Yellow"),WEIGHT 16.0, CITY "Grimbergen"}
+    };
+    
+    SHIPMENTS := RELATION {
+      TUPLE {SID S#("S1"), PID P#("P1"), QTY 300},
+      TUPLE {SID S#("S1"), PID P#("P2"), QTY 200},
+      TUPLE {SID S#("S1"), PID P#("P3"), QTY 400},
+      TUPLE {SID S#("S1"), PID P#("P4"), QTY 200},
+      TUPLE {SID S#("S1"), PID P#("P5"), QTY 100},
+      TUPLE {SID S#("S1"), PID P#("P6"), QTY 100},
+      TUPLE {SID S#("S2"), PID P#("P1"), QTY 300},
+      TUPLE {SID S#("S2"), PID P#("P2"), QTY 400},
+      TUPLE {SID S#("S3"), PID P#("P2"), QTY 200},
+      TUPLE {SID S#("S3"), PID P#("P7"), QTY 300},
+      TUPLE {SID S#("S4"), PID P#("P2"), QTY 200},
+      TUPLE {SID S#("S4"), PID P#("P4"), QTY 300},
+      TUPLE {SID S#("S4"), PID P#("P5"), QTY 400}
+    };
+#
+- exemplar: suppliers-and-parts
+  dataset: empty
+  language: tutorial-d
+  formaldef: |-
+    DELETE SHIPMENTS;
+    DELETE PARTS;
+    DELETE SUPPLIERS;
+- exemplar: suppliers-and-parts
+  dataset: no-shipments
+  language: tutorial-d
+  formaldef: |-
+    DELETE SHIPMENTS;
+    DELETE PARTS;
+    DELETE SUPPLIERS;
+
+    SUPPLIERS := RELATION {
+      TUPLE {SID S#("S1"), NAME NAME("Smith"), STATUS 20, CITY "London"},
+      TUPLE {SID S#("S2"), NAME NAME("Jones"), STATUS 10, CITY "Paris"},
+      TUPLE {SID S#("S3"), NAME NAME("Blake"), STATUS 30, CITY "Paris"},
+      TUPLE {SID S#("S4"), NAME NAME("Clark"), STATUS 20, CITY "London"},
+      TUPLE {SID S#("S5"), NAME NAME("Adams"), STATUS 30, CITY "Athens"}
+    };
+
+    PARTS := RELATION {
+      TUPLE {PID P#("P1"), NAME NAME("Nut"),   COLOR COLOR("Red"),   WEIGHT 12.0, CITY "London"},
+      TUPLE {PID P#("P2"), NAME NAME("Bolt"),  COLOR COLOR("Green"), WEIGHT 17.0, CITY "Paris"},
+      TUPLE {PID P#("P3"), NAME NAME("Screw"), COLOR COLOR("Blue"),  WEIGHT 17.0, CITY "Oslo"},
+      TUPLE {PID P#("P4"), NAME NAME("Screw"), COLOR COLOR("Red"),   WEIGHT 14.0, CITY "London"},
+      TUPLE {PID P#("P5"), NAME NAME("Cam"),   COLOR COLOR("Blue"),  WEIGHT 12.0, CITY "Paris"},
+      TUPLE {PID P#("P6"), NAME NAME("Cog"),   COLOR COLOR("Red"),   WEIGHT 19.0, CITY "London"}
+    };
+#
+- exemplar: suppliers-and-parts
+  dataset: base
+  language: sql
+  formaldef: |-
+    DELETE FROM shipments;
+    DELETE FROM parts;
+    DELETE FROM suppliers;
+
+    INSERT INTO suppliers (sid, name, status, city) VALUES
+      ('S1', 'Smith', 20, 'London'),
+      ('S2', 'Jones', 10, 'Paris'),
+      ('S3', 'Blake', 30, 'Paris'),
+      ('S4', 'Clark', 20, 'London'),
+      ('S5', 'Adams', 30, 'Athens');
+
+    INSERT INTO parts (pid, name, color, weight, city) VALUES
+      ('P1', 'Nut',  'Red',   12.0, 'London'),
+      ('P2', 'Bolt', 'Green', 17.0, 'Paris'),
+      ('P3', 'Screw', 'Blue', 17.0, 'Oslo'),
+      ('P4', 'Screw', 'Red', 14.0, 'London'),
+      ('P5', 'Cam', 'Blue', 12.0, 'Paris'),
+      ('P6', 'Cog', 'Red', 19.0, 'London');
+
+    INSERT INTO shipments (sid, pid, qty) VALUES
+      ('S1', 'P1', 300),
+      ('S1', 'P2', 200),
+      ('S1', 'P3', 400),
+      ('S1', 'P4', 200),
+      ('S1', 'P5', 100),
+      ('S1', 'P6', 100),
+      ('S2', 'P1', 300),
+      ('S2', 'P2', 400),
+      ('S3', 'P2', 200),
+      ('S4', 'P2', 200),
+      ('S4', 'P4', 300),
+      ('S4', 'P5', 400);
+- exemplar: suppliers-and-parts
+  dataset: empty
+  language: sql
+  formaldef: |-
+    DELETE FROM shipments;
+    DELETE FROM parts;
+    DELETE FROM suppliers;
+- exemplar: suppliers-and-parts
+  dataset: no-shipments
+  language: sql
+  formaldef: |-
+    DELETE FROM shipments;
+    DELETE FROM parts;
+    DELETE FROM suppliers;
+
+    INSERT INTO suppliers (sid, name, status, city) VALUES
+      ('S1', 'Smith', 20, 'London'),
+      ('S2', 'Jones', 10, 'Paris'),
+      ('S3', 'Blake', 30, 'Paris'),
+      ('S4', 'Clark', 20, 'London'),
+      ('S5', 'Adams', 30, 'Athens');
+
+    INSERT INTO parts (pid, name, color, weight, city) VALUES
+      ('P1', 'Nut',  'Red',   12.0, 'London'),
+      ('P2', 'Bolt', 'Green', 17.0, 'Paris'),
+      ('P3', 'Screw', 'Blue', 17.0, 'Oslo'),
+      ('P4', 'Screw', 'Red', 14.0, 'London'),
+      ('P5', 'Cam', 'Blue', 12.0, 'Paris'),
+      ('P6', 'Cog', 'Red', 19.0, 'London');
