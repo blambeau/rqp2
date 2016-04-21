@@ -68,13 +68,18 @@ module RQP2
         puts "Sending report to #{tuple.email}"
 
         mail = Mail.new do
-          from    'blambeau@gmail.com'
-          to      tuple.email.to_s
-          cc      'bernard.lambeau@uclouvain.be'
-          subject "[INGI2172] submission feedback for Mission 2"
+          from     MAIL_CONFIG["from"]
+          to       tuple.email.to_s
+          cc       (MAIL_CONFIG["replyto"] || MAIL_CONFIG["from"])
+          reply_to (MAIL_CONFIG["replyto"] || MAIL_CONFIG["from"])
+          subject  "[INGI2172] submission feedback for Mission 2"
           html_part do
             content_type 'text/html; charset=UTF-8'
-            body WLang::Html.render(Path.dir/'report.email', {})
+            body WLang::Html.render(Path.dir/'report.email', 
+              { 
+                signature: (MAIL_CONFIG["emailsignature"] || "The TAs"), 
+                name: tuple.name
+              })
           end
           add_file target.to_s
         end
