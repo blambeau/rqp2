@@ -21,6 +21,13 @@ On a fresh git clone, with a decent ruby installation (i.e. including bundler):
     bundle install --binstubs
     ```
 
+   Some dependencies requiring C compilation may not install properly under MacOS. `ARCHFLAGS` must be properly set during bundling. It is also possible to install those dependencies manually:
+
+    ```
+    env ARCHFLAGS="-arch x86_64" gem install pg -v '0.17.1'
+    env ARCHFLAGS="-arch x86_64" gem install nokogiri -v '1.6.1'
+    ```
+
 2. Copy the config example files in `config/` and adapt them to your environment.
 
 3. Make sure that you have both PostgreSQL server and database matching your
