@@ -1,0 +1,7 @@
+[
+  {"level":0, "difficulty":"straightforward", "stars":1  },
+  {"level":1, "difficulty":"easy",            "stars":2  },
+  {"level":2, "difficulty":"medium",          "stars":4  },
+  {"level":3, "difficulty":"difficult",       "stars":8  },
+  {"level":4, "difficulty":"hard",            "stars":16 }
+]

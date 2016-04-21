@@ -1,0 +1,7 @@
+[
+  { "score": 8,   "evaluation": "F", "grade": 8  },
+  { "score": 20,  "evaluation": "D", "grade": 10 },
+  { "score": 44,  "evaluation": "C", "grade": 14 },
+  { "score": 92,  "evaluation": "B", "grade": 18 },
+  { "score": 172, "evaluation": "A", "grade": 20 }
+]
