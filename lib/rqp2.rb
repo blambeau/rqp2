@@ -77,6 +77,12 @@ module RQP2
     schema_cache: true
   })
 
+  # Test configuration file, if any
+  TEST_CONFIG_FILE = CONFIG_FOLDER/'test.yml'
+
+  # What test configuration to use
+  TEST_CONFIG = config_for(ENVIRONMENT, TEST_CONFIG_FILE)
+
   # Mail configuration file, if any
   MAIL_CONFIG_FILE = CONFIG_FOLDER/'mail.yml'
 

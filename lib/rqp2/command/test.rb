@@ -10,7 +10,7 @@ module RQP2
 
       def initialize(*args)
         super
-        @against = { name: 'Bernard Lambeau' }
+        @against = { name: TEST_CONFIG["against"] }
       end
       attr_reader :against
 
